@@ -1,7 +1,9 @@
 (ns democars.core
+  (:require [clojure.data.json :as json]
+  			[democars.file-manager :as fm])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "I do maginc from here!!!"
   [& args]
-  (println "Hello, World!"))
+  (fm/jsonData (str "data/democars.json")))
