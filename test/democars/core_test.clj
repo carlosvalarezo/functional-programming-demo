@@ -1,7 +1,7 @@
 (ns democars.core-test
   (:require [clojure.test :refer :all]
-            [democars.core :refer :all]))
+            [democars.core :refer :all]
+            [democars.file-manager :as fm]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest getAge
+  (is (= 24 (fm/printJson {:age 24}))))
