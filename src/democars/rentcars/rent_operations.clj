@@ -4,11 +4,8 @@
             [democars.datacars.available-cars :as ac]
             [democars.datacars.type-cars :as tc]))
 
-(defn getNumberOfDays [startDate, endDate]
-  (t/in-days (t/interval (l/to-local-date-time startDate), (l/to-local-date-time endDate))))
-
 (defn checkAvailabilityOfCar [car]
-  (empty? (filter (fn [car1] (= (get car :model) (get car1 :model))) ac/availableCars)))
+  (empty? (filter (fn [availableCar] (= (get car :model) (get availableCar :model))) ac/availableCars)))
 
 (defn getPriceByTypeOfCar [car]
-  (:price (first (filter (fn [car1] (= (get car :type) (get car1 :type))) tc/typeOfCars))))
+  (:price (first (filter (fn [typeOfCar] (= (get car :type) (get typeOfCar :type))) tc/typeOfCars))))

@@ -1,6 +1,6 @@
 (ns democars.business-rules
   (:require [clojure.data.json :as json]
-            [democars.payments.payments :as pay]))
+            [democars.payments.payment :as pay]))
 
 
 (defn getJsonValues [jsonString, minimumAge]
