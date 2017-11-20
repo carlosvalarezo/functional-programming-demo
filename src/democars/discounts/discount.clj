@@ -1,13 +1,15 @@
 (ns democars.discounts.discount
-  (:require [clj-time.core :as t]
-            [clj-time.coerce :as coerce]
-            [clj-time.local :as l]))
+  (:require [democars.discounts.membership-discount :as membership]
+            [democars.discounts.numberofdays-discount :as numberOfDays]
+            [democars.discounts.weekdays-discount :as weekdays]))
 
-(defn getNumberOfDays [startDate, endDate]
-  (t/in-days (t/interval (l/to-local-date-time startDate) (l/to-local-date-time endDate))))
-
-(defn applyDiscount [amount discount]
-  (if (= discount 0) 0 (* amount discount)))
 
 (defn calculateTotalDiscount [& args]
   (+ args))
+
+(defn calculateDiscount [rentDays car ]
+      (+ (weekdays/calculateDiscountOnWeekDay rentDays car)
+         (membership/calculateDiscountByMembership rentDays car)
+         (numberOfDays/calculateDiscountByNumberOfDays rentDays car)
+         ))
+

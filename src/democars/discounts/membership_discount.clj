@@ -1,6 +1,6 @@
 (ns democars.discounts.membership-discount
-  (:require [democars.discounts.discount :as discount]
+  (:require [democars.utiles.util :as util]
             [democars.payments.payment :as payment]))
 
 (defn calculateDiscountByMembership [rentDates car]
-  (discount/applyDiscount (payment/calculateSubTotal rentDates car) 0.05))
+  (util/applyDiscount (payment/calculateSubTotal rentDates car) 0.05))
