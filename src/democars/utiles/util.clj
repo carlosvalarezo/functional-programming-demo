@@ -19,4 +19,4 @@
   (t/in-days (t/interval (l/to-local-date-time startDate) (l/to-local-date-time endDate))))
 
 (defn applyDiscount [amount discount]
-      (if (= discount 0) 0 (* amount discount)))
+  (if (= discount 0) 0 (* amount discount)))
