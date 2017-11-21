@@ -29,10 +29,10 @@
   (is (= 12.0 (weekDays/calculateDiscountOnWeekDays ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Eveo" :type "sport"}))))
 
 (deftest getDiscountByMembership
-  (is (= 9.0 (membership/calculateDiscountByMembership ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Cherato" :type "sport"}))))
+  (is (= 6.0 (membership/calculateDiscountByMembership ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Cherato" :type "sport"}))))
 
 (deftest getDiscountByThreeDaysOfASmallCar
-  (is (= 6.0 (numberDays/calculateDiscountByNumberOfDays ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Halfing" :type "small"}))))
+  (is (= 0 (numberDays/calculateDiscountByNumberOfDays ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Halfing" :type "small"}))))
 
 (deftest getInsuranceByTwoDaysOfASmallCar
   (is (= 2.5 (insurance/calculateInsurancePolicy ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Dwarf" :type "small"} 19))))
