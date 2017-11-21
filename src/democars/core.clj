@@ -1,6 +1,5 @@
 (ns democars.core
-  (:require [clojure.data.json :as json]
-  			    [democars.file-manager :as fm]
+  (:require [democars.file-manager :as fm]
             [democars.business-rules :as br])
   (:gen-class))
 

@@ -5,8 +5,6 @@
             [democars.payments.payment :as payment]
             [democars.utiles.util :as util]))
 
-
-
 (defn discountByDays [amount days]
   (cond
     (and (>= days 3) (<= days 5)) (util/applyDiscount amount 0.05)

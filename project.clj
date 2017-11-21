@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/data.json "0.2.6"]
-                 [clj-time "0.14.2"]]
+                 [clj-time "0.14.2"]
+                 [cheshire "5.8.0"]]
   :main ^:skip-aot democars.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

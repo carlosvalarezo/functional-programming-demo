@@ -8,9 +8,4 @@
            (util/applyDiscount amount 0)))
 
 (defn calculateDiscountOnWeekDays [rentDates car]
-  (reduce +
-          (map
-            (fn [rentDate]
-              (discountOnWeekdays rentDate
-                                  (operations/getPriceByTypeOfCar car)))
-            rentDates)))
+  (reduce + (map (fn [rentDate] (discountOnWeekdays rentDate (operations/getPriceByTypeOfCar car))) rentDates)))

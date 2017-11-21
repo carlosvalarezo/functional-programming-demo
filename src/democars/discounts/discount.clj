@@ -16,5 +16,5 @@
 
 (defn calculateTotalDiscount [rentDates car membership]
   (+ (calculateWeekDayDiscount rentDates car)
-     (if (= membership true) (calculateMembershipDiscount rentDates car) 0))
-     (calculateNumberOfDaysDiscount rentDates car))
+     (calculateNumberOfDaysDiscount rentDates car)
+     (if (= membership true) (calculateMembershipDiscount rentDates car) 0)))
