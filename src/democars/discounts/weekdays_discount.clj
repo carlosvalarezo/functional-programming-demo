@@ -1,11 +1,7 @@
 (ns democars.discounts.weekdays-discount
   (:require [democars.rentcars.rent-operations :as operations]
-            [democars.utiles.util :as util]))
-
-(defn discountOnWeekdays [date amount]
-  (if (= (util/isWeekday? date) true)
-           (util/applyDiscount amount 0.10)
-           (util/applyDiscount amount 0)))
+            [democars.utiles.util :as util]
+            [democars.discounts.algorithms.implementation :as implementation]))
 
 (defn calculateDiscountOnWeekDays [rentDates car]
-  (reduce + (map (fn [rentDate] (discountOnWeekdays rentDate (operations/getPriceByTypeOfCar car))) rentDates)))
+  (reduce + (map (fn [rentDate] (implementation/getDiscountOnWeekdays rentDate (operations/getPriceByTypeOfCar car))) rentDates)))

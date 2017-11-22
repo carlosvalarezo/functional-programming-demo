@@ -1,30 +1,28 @@
-(ns democars.insurance.insurance-policy
-  (:require [democars.rentcars.rent-operations :as operations]
-            [democars.utiles.util :as util]))
+(ns democars.insurance.insurance-policy)
 
-(defn insurancePolicyByCar [age numberOfDays recharge]
+(defn insurancePolicyByCar [numberOfDays age recharge]
   (if (< age 25)
     (* (* numberOfDays recharge) 0.25)
     (* numberOfDays recharge))
   )
 
 (defn applyInsurancePolicy [policy]
-  (fn [age numberOfDays recharge]
-    (policy age numberOfDays recharge)))
+  (fn [numberOfDays age recharge]
+    (policy numberOfDays age recharge)))
 
 (def policyCars (applyInsurancePolicy insurancePolicyByCar))
 
-(defn calculateInsurancePolicy [rentDays car age]
+(defn calculateInsurancePolicy [numberOfDays age car]
   (let [typeOfCar (:type car)]
     (cond
       (= typeOfCar "small")
-      (policyCars age (util/getNumberOfDays (first rentDays) (last rentDays)) 5)
+      (policyCars numberOfDays age 5)
       (= typeOfCar "sport")
-      (policyCars age (util/getNumberOfDays (first rentDays) (last rentDays)) 7)
+      (policyCars numberOfDays age 7)
       (= typeOfCar "SUV")
-      (policyCars age (util/getNumberOfDays (first rentDays) (last rentDays)) 10)
-      )
-    ))
+      (policyCars numberOfDays age 10))))
+
+
 
 
 
