@@ -1,10 +1,11 @@
 (ns democars.insurance.insurance-policy)
 
 (defn insurancePolicyByCar [numberOfDays age recharge]
-  (if (< age 25)
-    (* (* numberOfDays recharge) 0.25)
-    (* numberOfDays recharge))
-  )
+  (cond
+    (and (<= age 25) (>= age 18)) (* (* numberOfDays recharge) 0.25)
+    (> age 25) (* numberOfDays recharge)
+    :else 0
+    ))
 
 (defn applyInsurancePolicy [policy]
   (fn [numberOfDays age recharge]

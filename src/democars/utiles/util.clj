@@ -3,14 +3,14 @@
             [clj-time.coerce :as coerce]
             [clj-time.local :as l]))
 
-(defn saturday? [date-time]
-  (= (t/day-of-week (l/to-local-date-time date-time)) 6))
+(defn saturday? [date]
+  (= (t/day-of-week (l/to-local-date-time date)) 6))
 
-(defn sunday? [date-time]
-  (= (t/day-of-week (l/to-local-date-time date-time)) 7))
+(defn sunday? [date]
+  (= (t/day-of-week (l/to-local-date-time date)) 7))
 
-(defn weekend? [date-time]
-  (or (saturday? date-time) (sunday? date-time)))
+(defn weekend? [date]
+  (or (saturday? date) (sunday? date)))
 
 (defn isWeekday? [date]
   (not (weekend? date)))

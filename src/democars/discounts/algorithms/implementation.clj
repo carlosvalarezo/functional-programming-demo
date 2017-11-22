@@ -15,9 +15,9 @@
     (>= numberOfDays 11) (applyDiscount subtotal 0.15)
     :else 0))
 
-(defn getDiscountOnWeekdays [date amount]
+(defn getDiscountOnWeekdays [date subtotal]
   (if (= (util/isWeekday? date) true)
-    (applyDiscount amount 0.10)
-    (applyDiscount amount 0)))
+    (applyDiscount subtotal 0.10)
+    0))
 
 

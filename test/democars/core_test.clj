@@ -9,7 +9,8 @@
             [democars.utiles.util :as util]
             [democars.insurance.insurance-policy :as insurance]
             [democars.payments.payment :as payment]
-            [democars.payments.algorithms.implementation :as implementation]))
+            [democars.payments.algorithms.implementation :as implementation]
+            [democars.discounts.algorithms.implementation :as implDiscount]))
 
 (deftest gettingNumberOfDays
   (is (= 2 (util/getNumberOfDays "2017-11-19T05:00:00.000Z" "2017-11-21T05:00:00.000Z"))))
@@ -47,5 +48,8 @@
 (deftest getInsuranceByTwoDaysOfASmallCar
   (is (= 0 (insurance/calculateInsurancePolicy 2 14 {:model "Dwarf" :type "small"}))))
 
+(deftest getDiscountOnWeekend
+  (is (= 0 (implDiscount/getDiscountOnWeekdays "2017-11-19T05:00:00.000Z" 180))))
 
-
+(deftest getDiscountOnWeekday
+  (is (= 18.0 (implDiscount/getDiscountOnWeekdays "2017-11-22T05:00:00.000Z" 180))))
