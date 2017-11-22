@@ -17,7 +17,7 @@
     (= discount "weekdays") (calculateWeekDayDiscount rentDates car)
     (= discount "numberOfDays") (calculateNumberOfDaysDiscount numberOfDays subtotal)
     (= discount "membership") (calculateMembershipDiscount subtotal)
-  ))
+    ))
 
 (defn calculateTotalDiscount [rentDates numberOfDays subtotal car membership]
   (+ (calculateDiscount rentDates numberOfDays subtotal car "weekdays")

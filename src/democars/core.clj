@@ -6,4 +6,4 @@
 (defn -main
   "I do magic from here!!!"
   [& args]
-  (br/getJsonValues (fm/getJsonData (str "data/democars.json")) 18) )
+  (br/getJsonValues (fm/getJsonData (str "data/democars.json")) 18))

@@ -8,9 +8,9 @@
 (defn getMembershipDiscount [amount]
   (applyDiscount amount 0.05))
 
-(defn getDiscountByDays [numberOfDays subtotal ]
+(defn getDiscountByDays [numberOfDays subtotal]
   (cond
-    (and (>= numberOfDays 3) (<= numberOfDays 5)) (applyDiscount  subtotal 0.05)
+    (and (>= numberOfDays 3) (<= numberOfDays 5)) (applyDiscount subtotal 0.05)
     (and (>= numberOfDays 6) (<= numberOfDays 10)) (applyDiscount subtotal 0.10)
     (>= numberOfDays 11) (applyDiscount subtotal 0.15)
     :else 0))

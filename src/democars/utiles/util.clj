@@ -4,7 +4,7 @@
             [clj-time.local :as l]))
 
 (defn saturday? [date-time]
-  (= (t/day-of-week (l/to-local-date-time date-time) ) 6))
+  (= (t/day-of-week (l/to-local-date-time date-time)) 6))
 
 (defn sunday? [date-time]
   (= (t/day-of-week (l/to-local-date-time date-time)) 7))
