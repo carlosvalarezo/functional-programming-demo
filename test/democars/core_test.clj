@@ -8,10 +8,14 @@
             [democars.discounts.membership-discount :as membership]
             [democars.utiles.util :as util]
             [democars.insurance.insurance-policy :as insurance]
-            [democars.payments.payment :as payment]))
+            [democars.payments.payment :as payment]
+            [democars.payments.algorithms.implementation :as implementation]))
 
 (deftest gettingNumberOfDays
   (is (= 2 (util/getNumberOfDays "2017-11-19T05:00:00.000Z" "2017-11-21T05:00:00.000Z"))))
+
+(deftest gettingNumberOfDays
+  (is (= 3 (util/getNumberOfDays "2017-11-19T05:00:00.000Z" "2017-11-22T05:00:00.000Z"))))
 
 (deftest checkingAvailabilityOfCherato
   (is (= false (operations/checkAvailabilityOfCar {:model "Cherato" :type "sport"}) )))
@@ -23,19 +27,25 @@
   (is (= 40 (operations/getPriceByTypeOfCar {:model "Dwarfy" :type "small"}))))
 
 (deftest getSubtotalOf3DaysInASportCar
-  (is (= 120 (payment/calculateSubTotal ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Eveo" :type "sport"} ))))
+  (is (= 180 (implementation/calculateSubTotal 3 {:model "Eveo" :type "sport"} ))))
 
 (deftest getDiscountOnTwoDaysAsWeekDay
   (is (= 12.0 (weekDays/calculateDiscountOnWeekDays ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Eveo" :type "sport"}))))
 
 (deftest getDiscountByMembership
-  (is (= 6.0 (membership/calculateDiscountByMembership ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Cherato" :type "sport"}))))
+  (is (= 9.0 (membership/calculateDiscountByMembership 180))))
 
 (deftest getDiscountByThreeDaysOfASmallCar
-  (is (= 0 (numberDays/calculateDiscountByNumberOfDays ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Halfing" :type "small"}))))
+  (is (= 6.0 (numberDays/calculateDiscountByNumberOfDays 3 120))))
+
+(deftest getDiscountByTwoDaysOfASmallCar
+  (is (= 0 (numberDays/calculateDiscountByNumberOfDays 2 120))))
 
 (deftest getInsuranceByTwoDaysOfASmallCar
-  (is (= 2.5 (insurance/calculateInsurancePolicy ["2017-11-19T05:00:00.000Z","2017-11-20T05:00:00.000Z","2017-11-21T05:00:00.000Z"] {:model "Dwarf" :type "small"} 19))))
+  (is (= 2.5 (insurance/calculateInsurancePolicy 2 19 {:model "Dwarf" :type "small"}))))
 
-(deftest getTotalDiscountThreeDaysOfASmallCarWithMembershipTwoWeekDays
-  (is (= 27.0 (+ 6.0 9.0 12.0))))
+(deftest getInsuranceByTwoDaysOfASmallCar
+  (is (= 0 (insurance/calculateInsurancePolicy 2 14 {:model "Dwarf" :type "small"}))))
+
+
+
