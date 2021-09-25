@@ -1,4 +1,4 @@
-# democars
+# Functional Programming demo in Clojure
 
 This project is a demo about using some features of Clojure. It is about a renting car business. It implements design patterns like strategy and decorator(to process discounts) using functional programming paradigm.
 Additionally, it shows the use of relevant features of functional programming like immutability, no-side effects of the functions and flow control through function calls. Despite the fact it includes a couple of tests this part is TODO or TOIMPROVE.
